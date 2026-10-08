@@ -1,0 +1,20 @@
+merge_queue:
+  mode: serial
+
+conflict_resolvers:
+  - package-manager: uv
+    directories:
+      - "/"
+  - paths:
+      - pyproject.toml
+      - uv.lock
+    strategy: ours
+
+queue_rules:
+  - name: vm5-pmuv-order
+    batch_size: 2
+    batch_max_wait_time: 45
+    queue_conditions: []
+    merge_conditions:
+      - check-success = vm5-pmuv-order-never
+    merge_method: merge-batch
