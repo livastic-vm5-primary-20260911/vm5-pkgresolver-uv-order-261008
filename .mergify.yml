@@ -2,13 +2,13 @@ merge_queue:
   mode: serial
 
 conflict_resolvers:
-  - package-manager: uv
-    directories:
-      - "/"
   - paths:
       - pyproject.toml
       - uv.lock
     strategy: ours
+  - package-manager: uv
+    directories:
+      - "/"
 
 queue_rules:
   - name: vm5-pmuv-order
